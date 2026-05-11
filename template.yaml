@@ -3,11 +3,11 @@ Transform: AWS::Serverless-2016-10-31
 Description: Proyecto Automatizado de IA
 
 Resources:
-  # El cubo de basura/almacenamiento para tus fotos
+  # El cubo de basura de fotos
   MiCuboMagico:
     Type: AWS::S3::Bucket
 
-  # La función cerebro que procesa todo
+  # La función que procesa todo
   ProcesadorIA:
     Type: AWS::Serverless::Function
     Properties:
