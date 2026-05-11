@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Proyecto Automatizado de IA
+
+Resources:
+  # El cubo de basura/almacenamiento para tus fotos
+  MiCuboMagico:
+    Type: AWS::S3::Bucket
+
+  # La función cerebro que procesa todo
+  ProcesadorIA:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
+      Events:
+        SubidaFoto:
+          Type: S3
+          Properties:
+            Bucket: !Ref MiCuboMagico
+            Events: s3:ObjectCreated:*
